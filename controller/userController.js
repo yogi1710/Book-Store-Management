@@ -84,12 +84,12 @@ exports.verifyLogin = async(req,res)=>{
         // }
         if (!existingEmail) {
             return res.status(401).json({ error: 'User does not exist.' });
-          }
-      
-          const isPasswordValid = await existingEmail.comparePassword(password);
-          if (!isPasswordValid) {
+        }
+
+        const isPasswordValid = await existingEmail.comparePassword(password);
+        if (!isPasswordValid) {
             return res.status(401).json({ error: 'Invalid email and password' });
-          }
+        }
     
         req.session.user = existingEmail;
         // const passwordMatch = await bcrypt.compare(password,existingUser.password);
@@ -321,9 +321,8 @@ exports.verifyAdminLogin = async(req,res)=>{
 
         const isPasswordValid = await existingEmail.comparePassword(password);
         if (!isPasswordValid) {
-          return res.status(401).json({ error: 'Invalid email and password' });
+            return res.status(401).json({ error: 'Invalid email and password' });
         }
-  
 
         req.session.user = existingEmail;
         // const passwordMatch = await bcrypt.compare(password,existingUser.password);
